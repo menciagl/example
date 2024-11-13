@@ -1,0 +1,53 @@
+---
+title: "Mi first slides"
+subtitle: "Dataviz of gapminder"
+author: "Mencía"
+format: revealjs
+editor: visual
+---
+
+## #loading data
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Code
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+library(tidyverse)
+library(gapminder)
+gapminder
+```
+
+---
+
+#preprocess data
+
+```{r}
+#| eco: true
+library(dplyr)
+library(tidyverse)
+gapminder_2007 <- 
+  gapminder |>
+  filter(year==2007)
+```
+
+---
+##Plot the data
+
+```{r}
+#|echo: false
+library(ggplot2)
+ggplot(gapminder_2007) +
+  geom_point (aes(x = lifeExp, y = gdpPercap,
+                  color=continent)) +
+  ggthemes::scale_color_colorblind()+
+  theme_minimal()
+```
+
